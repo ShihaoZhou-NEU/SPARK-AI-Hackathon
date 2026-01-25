@@ -28,10 +28,14 @@
 
 | **活动** | **时间** | **形式** | **相关链接** |
 | --- | --- | --- | --- |
-| **开始报名** | 2026年1月26日 20: 00 (UTC+8) | 📍 线上 | **👉 [点击此处填写报名表](https://github.com/CasualHackathon/SPARK-AI-Hackathon/issues/new?template=register.md)** |
-| **报名截至** | 2026年2月1日 12: 00 (UTC+8) | 📍 线上 | **👉 [点击此处提交 Demo](https://github.com/CasualHackathon/SPARK-AI-Hackathon/issues/new?template=submission.md)** |
-| 🗓**Open Day** | 2026年1月28日 19:00-20:30 (UTC+8) | 📍 线上 | [Zoom 链接][ZOOM_LINK] |
-| 🏁**Demo Day** | 2026年2月1日 20:00-21:00 (UTC+8) | 📍 线上 | [Zoom 链接][ZOOM_LINK] |
+| **开始报名** | 2026 年 1 月 26 日 20: 00 (UTC+8) | 📍 线上 | **👉 点击此处填写报名表** |
+| **Demo 提交截至** | 2026 年 2 月 1 日 12: 00 (UTC+8) | 📍 线上 | **👉 点击此处提交 Demo** |
+| 🗓**Open Day** | 2026 年 1 月 28 日 19:00-20:30 (UTC+8) | 📍 线上 | [Zoom 链接][ZOOM_LINK] |
+| **Workshop** | 2026年 1月19日 | 📍 线上 | [Zoom 链接][ZOOM_LINK] |
+| 🏁**Demo Day** | 2026 年 2 月 1 日 20:00-22:00 (UTC+8) | 📍 线上 | [Zoom 链接][ZOOM_LINK] |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
 
 **报名教程：**
 
