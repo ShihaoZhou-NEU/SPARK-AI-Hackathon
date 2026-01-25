@@ -1,6 +1,6 @@
 # Contributing to SPARK AI Hackathon
 
-Thanks for your interest in contributing!
+点燃火种。现在。
 
 ## 1、报名教程视频
 
