@@ -71,12 +71,12 @@ function formatCol(text) {
  */
 function generateRegistrationTable(issues) {
   // Define Table Header
-  let table = '| 姓名 | GitHub ID | 联系方式 | 组队意愿 | 备注 | 更新资料 |\n';
-  table += '| --------- | --------- | -------- | -------- | ---- | -------- |\n';
+  let table = '| 姓名 | GitHub ID | 联系方式 | 组队意愿 | 赛道选择 | 备注 | 更新资料 |\n';
+  table += '| --------- | --------- | -------- | -------- | -------- | ---- | -------- |\n';
 
   // Return placeholder if list is empty
   if (!issues || issues.length === 0) {
-    table += '| 待更新... | - | - | - | - | - |\n';
+    table += '| 待更新... | - | - | - | - | - | - |\n';
     return table;
   }
 
@@ -90,12 +90,13 @@ function generateRegistrationTable(issues) {
     const name = extractValue(body, /\*\*Name \[姓名\]:/) || (issue.title || '');
     const contact = extractValue(body, /\*\*ContactMethod.*?(:|：)/); // Handle potential Chinese colon
     const wantsTeam = extractValue(body, /\*\*WantsTeam.*?(:|：)/);
+    const track = extractValue(body, /\*\*(Track|赛道).*?(:|：)/);
     const comment = extractValue(body, /\*\*Comment.*?(:|：)/);
 
     const githubId = issue.author ? issue.author.login : 'unknown';
     const issueUrl = issue.url;
 
-    table += `| ${formatCol(name)} | [@${githubId}](https://github.com/${githubId}) | ${formatCol(contact)} | ${formatCol(wantsTeam)} | ${formatCol(comment)} | [Link](${issueUrl}) |\n`;
+    table += `| ${formatCol(name)} | [@${githubId}](https://github.com/${githubId}) | ${formatCol(contact)} | ${formatCol(wantsTeam)} | ${formatCol(track)} | ${formatCol(comment)} | [Link](${issueUrl}) |\n`;
   });
 
   return table;

@@ -16,6 +16,9 @@ _您在以太坊主网的钱包地址或 ENS 域名_
 
 WantsTeam [组队意愿]:
 
+Track [赛道选择]:
+_例如：支付赛道 / LLM 应用赛道 / 预测市场赛道_
+
 Introduction [个人介绍]:
 
 Comment [备注]:
