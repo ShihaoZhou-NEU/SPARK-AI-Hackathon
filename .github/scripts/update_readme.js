@@ -13,40 +13,152 @@ const readmePath = path.join(process.env.GITHUB_WORKSPACE, 'README.md');
 const registrationsPath = process.env.REGISTRATIONS_PATH;
 const submissionsPath = process.env.SUBMISSIONS_PATH;
 
-// Helper to extract value from issue body
-// Matches **Key:** ...value... until the next **Key:** or End of String
-function extractValue(body, keyRegex) {
-  if (!body) return '';
+/**
+ * Parsing Configuration for Issues
+ * Maps internal field keys to the search strings in the Issue Template.
+ */
+const REGISTRATION_FIELDS = {
+  name: "Name [姓名]",
+  contact: "ContactMethod [联系方式]",
+  wantsTeam: "WantsTeam [组队意愿（是/否）]",
+  comment: "Comment [备注]"
+};
 
-  // Find the start of the key
-  const match = body.match(keyRegex);
-  if (!match) return '';
+const SUBMISSION_FIELDS = {
+  projectName: "ProjectName [项目名称]",
+  description: "Brief description [一句话简介]",
+  repoLink: "Github Repo Link [Github 地址]",
+  // optional fields if needed later
+  track: "Track [赛道]",
+  techStack: "TechStack [技术栈]",
+  fullDescription: "ProjectDescription [项目描述]",
+  teamLead: "Team Lead [负责人]",
+  wallet: "Team Wallet Address [团队钱包地址]",
+  demoLink: "Demo Link [演示链接]"
+};
 
-  // Start extracting after the matched key
-  const startIndex = match.index + match[0].length;
-  let remaining = body.substring(startIndex);
+/**
+ * Full template prompts to strip out from the lines.
+ * This helps avoiding the colon-in-description issue.
+ */
+const PROMPT_STRIPPERS = [
+  "**ContactMethod [联系方式] (格式: Telegram: @username，微信: username，邮箱: email@example.com):**",
+  "**ContactMethod [联系方式] (格式: Telegram: @username，微信: username，邮箱: email@example.com):",
+  "**Wallet Address [钱包地址] (您在以太坊主网的钱包地址或 ENS 域名):**",
+  "**Wallet Address [钱包地址] (您在以太坊主网的钱包地址或 ENS 域名):",
+  "**Team Wallet Address [团队钱包地址] (用于接收奖金，以太坊主网地址或 ENS 域名):**",
+  "**Team Wallet Address [团队钱包地址] (用于接收奖金，以太坊主网地址或 ENS 域名):"
+];
 
-  // If the key was wrapped in bold (e.g. **Key:**), the trailing ** might be here.
-  // Remove it if present.
-  if (remaining.startsWith('**')) {
-    remaining = remaining.substring(2);
+/**
+ * parser for Issue Body
+ * Iterates through lines to separate content by Key.
+ * @param {string} body - The issue body text
+ * @param {Object} fieldMap - Object mapping internal keys to template strings
+ * @returns {Object} Extracted data
+ */
+function parseIssueBody(body, fieldMap) {
+  if (!body) return {};
+
+  const lines = body.split(/\r?\n/);
+  const data = {};
+  let currentField = null;
+
+  // Initialize all fields to empty string
+  Object.keys(fieldMap).forEach(k => data[k] = '');
+
+  for (let i = 0; i < lines.length; i++) {
+    let line = lines[i].trim();
+    if (line === '') {
+      // If inside a field, preserve *paragraph* breaks? 
+      // Usually table cells don't like multiple paragraphs unless <br>.
+      // We'll append newline char to value and handle formatting later.
+      if (currentField) data[currentField] += '\n';
+      continue;
+    }
+
+    // Check if this line is a new field header
+    let matchedKey = null;
+    for (const [key, searchStr] of Object.entries(fieldMap)) {
+      if (line.includes(searchStr)) {
+        matchedKey = key;
+        break;
+      }
+    }
+
+    if (matchedKey) {
+      currentField = matchedKey;
+
+      // Extract value from the same line if exists
+      // 1. Try to strip known full prompts
+      let val = line;
+      let stripped = false;
+      for (const stripper of PROMPT_STRIPPERS) {
+        if (val.includes(stripper)) {
+          val = val.replace(stripper, '').trim();
+          stripped = true;
+          break;
+        }
+      }
+
+      // 2. If not stripped by exact prompt, try generic colon split
+      if (!stripped) {
+        // Find the searchStr in the line
+        const idx = val.indexOf(fieldMap[matchedKey]);
+        if (idx !== -1) {
+          // Start looking for colon AFTER the key
+          const afterKey = val.substring(idx + fieldMap[matchedKey].length);
+          // Find first colon in the remaining part
+          const colonMatch = afterKey.match(/(:|：)/);
+          if (colonMatch) {
+            val = afterKey.substring(colonMatch.index + 1).trim();
+          } else {
+            // No colon found? Maybe the line IS just the key.
+            // Or maybe like "**Key** Value"
+            // Heuristic: if starts with ** and ends with **, it's a header.
+            // If content remains, use it.
+            // For now, let's assume if we matched the key, we take the rest.
+            // If the afterKey starts with "**", strip it.
+            val = afterKey.trim();
+            if (val.startsWith('**')) val = val.substring(2);
+            if (val.endsWith('**')) val = val.substring(0, val.length - 2);
+            if (val.startsWith(':') || val.startsWith('：')) val = val.substring(1).trim();
+          }
+        }
+      }
+
+      // Clean up Markdown bolding if user left it
+      val = val.replace(/^\*\*|\*\*$/g, '');
+
+      if (val) {
+        data[currentField] = val;
+      }
+    } else {
+      // Not a header line, append to current field
+      if (currentField) {
+        // Detect if it is ANOTHER known field from a DIFFERENT map? 
+        // No, we only care about fields in fieldMap. 
+        // BUT we should avoid appending other headers if we are parsing partials?
+        // No, parseIssueBody is called with specific map (Reg or Sub).
+        // We should stop if we hit a line that looks like *any* header?
+        // For now, simpler is better.
+        if (data[currentField]) {
+          data[currentField] += (data[currentField].endsWith('\n') ? '' : ' ') + line;
+        } else {
+          data[currentField] = line;
+        }
+      }
+    }
   }
 
-  // Find the start of the next key to determine where the current value ends.
-  // Find the start of the next key to determine where the current value ends.
-  // We assume the next key starts on a new line, optional **, contains [...], and a colon.
-  // This helps avoid matching random lines with colons in the user's content.
-  const nextKeyRegex = /\r?\n\s*(?:\*\*)?.*?\[.*?\].*(:|：)/;
-  const nextMatch = remaining.match(nextKeyRegex);
-
-  let value = '';
-  if (nextMatch) {
-    value = remaining.substring(0, nextMatch.index);
-  } else {
-    value = remaining;
+  // Post-process: Trim values
+  for (const key in data) {
+    if (typeof data[key] === 'string') {
+      data[key] = data[key].trim();
+    }
   }
 
-  return value.trim();
+  return data;
 }
 
 /**
@@ -58,6 +170,8 @@ function extractValue(body, keyRegex) {
  */
 function formatCol(text) {
   if (!text) return '-';
+  // Remove ** markers inside text if any
+  // text = text.replace(/\*\*/g, ''); 
   return text.replace(/\|/g, '\\|').replace(/\r?\n/g, '<br>');
 }
 
@@ -81,15 +195,12 @@ function generateRegistrationTable(issues) {
   // Iterate through issues and build rows
   issues.forEach(issue => {
     const body = issue.body || '';
+    const fields = parseIssueBody(body, REGISTRATION_FIELDS);
 
-    // Extract fields based on the "register.md" template structure
-    // Improved Regex keys to match the exact template structure
-    // We look for the literal strings used in the template
-    // Extract fields - updated to be more robust (optional **, flexible colon)
-    const name = extractValue(body, /(?:\*\*)?Name \[姓名\].*?(:|：)/);
-    const contact = extractValue(body, /(?:\*\*)?ContactMethod.*?\)(:|：)/);
-    const wantsTeam = extractValue(body, /(?:\*\*)?WantsTeam.*?(:|：)/);
-    const comment = extractValue(body, /(?:\*\*)?Comment.*?(:|：)/);
+    const name = fields.name;
+    const contact = fields.contact;
+    const wantsTeam = fields.wantsTeam;
+    const comment = fields.comment;
 
     const githubId = issue.author ? issue.author.login : 'unknown';
     const issueUrl = issue.url;
@@ -119,11 +230,11 @@ function generateSubmissionTable(issues) {
   // Iterate through issues and build rows
   issues.forEach(issue => {
     const body = issue.body || '';
+    const fields = parseIssueBody(body, SUBMISSION_FIELDS);
 
-    // Extract fields - updated to be more robust
-    const projectName = extractValue(body, /(?:\*\*)?ProjectName.*?(:|：)/);
-    const description = extractValue(body, /(?:\*\*)?Brief description.*?(:|：)/);
-    const repoLink = extractValue(body, /(?:\*\*)?Github Repo Link.*?(:|：)/);
+    const projectName = fields.projectName;
+    const description = fields.description || fields.fullDescription; // Fallback
+    const repoLink = fields.repoLink;
 
     const githubId = issue.author ? issue.author.login : 'unknown';
     // Format date as YYYY-MM-DD
@@ -165,8 +276,10 @@ try {
 
   // 1. Process Registrations Table
   if (fs.existsSync(registrationsPath)) {
-    const registrations = JSON.parse(fs.readFileSync(registrationsPath, 'utf8'));
+    let registrations = JSON.parse(fs.readFileSync(registrationsPath, 'utf8'));
     console.log(`Found ${registrations.length} registrations.`);
+    // Filter out issues that don't have body content or are clearly not valid?
+    // For now trust the label.
     const regTable = generateRegistrationTable(registrations);
     readmeContent = replaceSection(readmeContent, '<!-- Registration start -->', '<!-- Registration end -->', regTable);
   } else {
@@ -175,7 +288,7 @@ try {
 
   // 2. Process Submissions Table
   if (fs.existsSync(submissionsPath)) {
-    const submissions = JSON.parse(fs.readFileSync(submissionsPath, 'utf8'));
+    let submissions = JSON.parse(fs.readFileSync(submissionsPath, 'utf8'));
     console.log(`Found ${submissions.length} submissions.`);
     const subTable = generateSubmissionTable(submissions);
     readmeContent = replaceSection(readmeContent, '<!-- Submission start -->', '<!-- Submission end -->', subTable);
