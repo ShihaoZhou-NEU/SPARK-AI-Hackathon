@@ -270,21 +270,22 @@
 ## 08 | 报名列表
 
 <!-- Registration start -->
+
 | 姓名 | GitHub ID | 联系方式 | 组队意愿 | 备注 | 更新资料 |
-| ---- | ----------- | ----------- | ----------- | ------- | ------- |
-| Serena | Serenayyy123 | 微信：shoujiyangt2559 | 愿意！ |感兴趣AI，欢迎大家联系我组队 | [更新](https://github.com/CasualHackathon/agenthack/issues/new?title=Registration%20-%20Serena&body=Name%20%5B%E5%A7%93%E5%90%8D%5D%3A%20Serena%0AContactMethod%20%5B%E8%81%94%E7%B3%BB%E6%96%B9%E5%BC%8F%5D%3A%20%E5%BE%AE%E4%BF%A1%EF%BC%9Ashoujiyangt2559%0AWantsTeam%20%5B%E7%BB%84%E9%98%9F%E6%84%8F%E6%84%BF%5D%3A%20%E6%84%BF%E6%84%8F%EF%BC%81%0AComment%20%5B%E5%A4%87%E6%B3%A8%5D%3A%20%E6%84%9F%E5%85%B4%E8%B6%A3AI%EF%BC%8C%E6%AC%A2%E8%BF%8E%E5%A4%A7%E5%AE%B6%E8%81%94%E7%B3%BB%E6%88%91%E7%BB%84%E9%98%9F) |
-| 测试 | beetroot42 | 测试 | 测试 |测试 | [更新](https://github.com/CasualHackathon/agenthack/issues/new?title=Registration%20-%20%E6%B5%8B%E8%AF%95&body=Name%20%5B%E5%A7%93%E5%90%8D%5D%3A%20%E6%B5%8B%E8%AF%95%0AContactMethod%20%5B%E8%81%94%E7%B3%BB%E6%96%B9%E5%BC%8F%5D%3A%20%E6%B5%8B%E8%AF%95%0AWantsTeam%20%5B%E7%BB%84%E9%98%9F%E6%84%8F%E6%84%BF%5D%3A%20%E6%B5%8B%E8%AF%95%0AComment%20%5B%E5%A4%87%E6%B3%A8%5D%3A%20%E6%B5%8B%E8%AF%95) |
-| 测试 | lejusuelge-star | 测试 | 测啊 |测试 | [更新](https://github.com/CasualHackathon/agenthack/issues/new?title=Registration%20-%20%E6%B5%8B%E8%AF%95&body=Name%20%5B%E5%A7%93%E5%90%8D%5D%3A%20%E6%B5%8B%E8%AF%95%0AContactMethod%20%5B%E8%81%94%E7%B3%BB%E6%96%B9%E5%BC%8F%5D%3A%20%E6%B5%8B%E8%AF%95%0AWantsTeam%20%5B%E7%BB%84%E9%98%9F%E6%84%8F%E6%84%BF%5D%3A%20%E6%B5%8B%E5%95%8A%0AComment%20%5B%E5%A4%87%E6%B3%A8%5D%3A%20%E6%B5%8B%E8%AF%95) |
+| --------- | --------- | -------- | -------- | ---- | -------- |
+| Serena | [@Serenayyy123](https://github.com/Serenayyy123) | Telegram: @username，微信: username，邮箱: email@example.com):**<br>Wechat：Shoujiyangt2559 | 愿意！ | 感兴趣AI求组队！ | [Link](https://github.com/CasualHackathon/SPARK-AI-Hackathon/issues/6) |
+| Serena | [@Serenayyy123](https://github.com/Serenayyy123) | Telegram: @username，微信: username，邮箱: email@example.com):**<br>shoujiyangt2559 | 是 | 关注AI赛道，有想法的小伙伴可以组队 | [Link](https://github.com/CasualHackathon/SPARK-AI-Hackathon/issues/5) |
+| 测试 | [@beetroot42](https://github.com/beetroot42) | Telegram: @username，微信: username，邮箱: email@example.com):** 测试 | 测试 | 测试 | [Link](https://github.com/CasualHackathon/SPARK-AI-Hackathon/issues/4) |
 
 <!-- Registration end -->
 
 ## 09 | 提交名单
 
 <!-- Submission start -->
+
 | 项目名称 | GitHub ID | 项目描述 | 项目链接 | 提交时间 |
-| ----------- | ----------------- | -------------- | ------ | -------- |
-| Spark AI | Serenayyy123 | test | [Repo](https://github.com/Serenayyy123/EverEcho-on-ZetaChain) \| [Folder](https://github.com/CasualHackathon/agenthack/tree/main/submissions/Serenayyy123) | - |
-| 测试 | beetroot42 | 测试 | [Repo](测试) \| [Folder](https://github.com/CasualHackathon/agenthack/tree/main/submissions/beetroot42) | - |
+| --------- | --------- | -------- | -------- | -------- |
+| - | [@beetroot42](https://github.com/beetroot42) | - | [Repo]() | 2026-01-25 |
 
 <!-- Submission end -->
 
