@@ -22,11 +22,12 @@
 
 📍 线上举行｜自由报名（面向所有人）
 
-| 活动                 | 时间                      | 形式    | 相关链接                                                        |
-| -------------------- | ------------------------- | ------- | --------------------------------------------------------------- |
-| **开始报名**   | [REGISTRATION_START_DATE] | 📍 线上 | **👉 [点击此处填写报名表](https://github.com/CasualHackathon/agenthack/issues/new?template=register.md)** |
-| 🗓**Open Day** | [OPEN_DAY_DATE_TIME]      | 📍 线上 | **👉 [点击此处提交 Demo](https://github.com/CasualHackathon/agenthack/issues/new?template=submission.md)** |
-| 🏁**Demo Day** | [DEMO_DAY_DATE_TIME]      | 📍 线上 | [Zoom 链接][ZOOM_LINK]                                          |
+| **活动** | **时间** | **形式** | **相关链接** |
+| --- | --- | --- | --- |
+| **开始报名** | 2026年1月26日 20: 00 (UTC+8) | 📍 线上 | **👉 [点击此处填写报名表](https://github.com/CasualHackathon/agenthack/issues/new?template=register.md)** |
+| **报名截至** | 2026年2月1日 12: 00 (UTC+8) | 📍 线上 | **👉 [点击此处提交 Demo](https://github.com/CasualHackathon/agenthack/issues/new?template=submission.md)** |
+| 🗓**Open Day** | 2026年1月28日 19:00-20:30 (UTC+8) | 📍 线上 | [Zoom 链接][ZOOM_LINK] |
+| 🏁**Demo Day** | 2026年2月1日 20:00-21:00 (UTC+8) | 📍 线上 | [Zoom 链接][ZOOM_LINK] |
 
 **报名教程：**
 
