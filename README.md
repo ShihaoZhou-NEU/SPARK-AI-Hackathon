@@ -136,7 +136,7 @@
 | **通用工具** | **DataDance** | SDK 文档 | [DataDance SDK 开发文档](https://docs.google.com/document/d/1xbGWsV8spQXA2ZBCmN-xJjcNvdJEWwo77edUyXh0aKs/edit) (处理数据神器) |
 ## 项目提交要求(Submission Guide)
 
-**⏰Demo提交截止时间：** **2026.1.30 23:59 前（UTC+8）**
+**⏰Demo提交截止时间：** **2026.2.1 12:00 前（UTC+8）**
 
 请通过 GitHub Issues 提交以下材料：
 
@@ -162,7 +162,7 @@
 
 ## Demo Day 展示指南（Showcase & Demo Guide）
 
-**时间：** [DEMO_DAY_DATE_TIME] (UTC+8)
+**时间：** **2026 年 2 月 1 日 20:00-22:00 (UTC+8)**
 
 **展示安排：**
 
