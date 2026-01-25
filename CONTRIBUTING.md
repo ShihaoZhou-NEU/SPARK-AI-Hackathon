@@ -4,7 +4,7 @@
 
 ## 01 | 报名教程视频（Registration Tutorial）
 
-## **2、注意事项（Important Notes）**
+## 02 | 注意事项（Important Notes）**
 
 1. 禁止修改他人信息。
 2. 提交 Demo 时必须先完成注册报名，否则提交无效。
