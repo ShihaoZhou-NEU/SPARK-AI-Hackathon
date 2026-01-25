@@ -102,7 +102,7 @@
 **📚 开发者资源 (Resources)**
 | 资源类型 | 说明与链接 |
 | :--- | :--- |
-| **❗核心文档** | [**SpoonOS · 最低技术要求（必读）**](https://www.notion.so/2f1bbd63be8780db8c59c20349715dd5?pvs=21) |
+| **核心文档** | [**SpoonOS · 最低技术要求（必读）**](https://www.notion.so/2f1bbd63be8780db8c59c20349715dd5?pvs=21) |
 | **模板库** | 常用 Agent 工作流模板 (抓取 -> 总结 -> 发布) |
 | **FAQ** | 环境安装与模型调用报错排查手册 |
 | **Workshop** | Rick 老师的实战教学视频 |
