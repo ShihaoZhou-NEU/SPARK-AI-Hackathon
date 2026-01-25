@@ -95,7 +95,7 @@
 
 ### **2.** SpoonOS - **LLM 应用 (LLM Application Track)**
 
-**🎯 核心目标：**基于 SpoonOS Framework 调用大语言模型（LLM），构建 **可执行的 AI 应用或 Agent 工作流**，而不仅仅是单轮对话 Demo。
+**🎯 核心目标：**基于 SpoonOS Framework 调用大语言模型（LLM），构建 **可执行的 AI 应用或 Agent 工作流**，而不仅仅是单轮对话 Demo。**
 
 **💡 开发灵感**
 
