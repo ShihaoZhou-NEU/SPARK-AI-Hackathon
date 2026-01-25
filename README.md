@@ -31,7 +31,7 @@
 | --- | --- | --- | --- |
 | **👋 开始报名 & 组队** | 1月26日 20:00 | 📍 GitHub Issue | [**👉 点击此处报名**](https://github.com/CasualHackathon/SPARK-AI-Hackathon/issues/new?template=register.md) |
 | **💻 Co-building (开发期)** | 1月27日 - 1月30/31日 | 📍 自由开发  | *Hacking Time!* |
-| **🗓 Open Day (开幕式)** | **1月28日 19:00-20:30** | 📍 Zoom | [**ZOOM 链接**](https://us06web.zoom.us/j/82510601772?pwd=2MtYQkfkFOIUsz98wb4lrzcdMQO1iB.1) |
+| **🗓 Open Day (开幕)** | **1月28日 19:00-20:30** | 📍 Zoom | [**ZOOM 链接**](https://us06web.zoom.us/j/82510601772?pwd=2MtYQkfkFOIUsz98wb4lrzcdMQO1iB.1) |
 | **🛠 Tech Workshop** | 1月29日  | 📍 Zoom | [Zoom 链接] |
 | **💬 AMA / Workshop** | **1月28/30日** | 📍 Zoom / Twitter | [Zoom 链接] |
 | **📥 Demo 提交截止** | **2月1日 12:00** | 📍 GitHub Issue | [**👉 点击此处提交 Demo**](https://github.com/CasualHackathon/SPARK-AI-Hackathon/issues/new?template=submission.md) |
