@@ -120,20 +120,20 @@
 
 为了让你专注于开发，我们整理了各赛道的“武器库”。
 
-| 赛道 | 资源类型 | 说明与链接 |
-| :--- | :--- | :--- |
-| **Kite AI** | API/SDK | 包含“一键调用支付”接口文档（见仓库 `/docs/kite` 或官方链接） |
-| | Demo 代码 | AI Agent 自动转账最小示例 (Hello World) |
-| | 教程 | "AI 与支付链路打通" Workshop 视频/PPT |
-| **SpoonOS** | **核心文档** | [**SpoonOS · 最低技术使用要求（Hackathon）**](https://www.notion.so/SpoonOS-Hackathon-2f1bbd63be8780db8c59c20349715dd5?pvs=21) ** |
-| | 模板库 | 常见 Agent 工作流模板 (抓取 -> 总结 -> 发布) |
-| | FAQ | 环境安装与模型调用报错排查手册 |
-| | Workshop | Rick 老师的实战教学视频 |
-| **OGBC x ScalingX** | 架构图 | 预测市场底层逻辑与合约交互图解（小白友好） |
-| | 案例库 | 优秀预测市场项目参考案例 |
-| | 实战题目 | 项目方发布的实战预测任务素材 |
-| **DataDance** | SDK 文档 | [DataDance SDK 开发文档](https://docs.google.com/document/d/1xbGWsV8spQXA2ZBCmN-xJjcNvdJEWwo77edUyXh0aKs/edit) (处理数据神器) |
-
+| 赛道 (Track) | 项目方 (Provider) | 资源类型 (Type) | 说明与链接 (Description & Links) |
+| --- | --- | --- | --- |
+| **支付赛道** | **Kite AI** | API/SDK | 包含“一键调用支付”接口文档（见仓库 `/docs/kite` 或官方链接https://gokite.ai/） |
+|  |  | Demo 代码 | AI Agent 自动转账 Hello World 示例（Helo World) |
+|  |  | 教程 | "AI 与支付链路打通" Workshop 视频/PPT |
+| **LLM 应用赛道** | **SpoonOS** | ❗核心文档 | [**SpoonOS · 最低技术要求（必读）**](https://www.notion.so/2f1bbd63be8780db8c59c20349715dd5?pvs=21) |
+|  |  | 模板库 | 常用 Agent 工作流模板 (抓取 -> 总结 -> 发布) |
+|  |  | FAQ | 环境安装与模型调用报错排查手册 |
+|  |  | Workshop | Rick 老师的实战教学视频 |
+| **预测市场赛道** | **OGBC x ScalingX** | 架构图 | 预测市场底层逻辑与合约交互图解 |
+|  |  | 案例库 | 优秀预测市场项目参考案例 |
+|  |  | 实战题目 | 项目方发布的实战预测任务素材 |
+|  |  | 学习资料 | [OGBC-Intern-Project 学习仓库](https://github.com/ogalias/OGBC-Intern-Project) |
+| **通用工具** | **DataDance** | SDK 文档 | [DataDance SDK 开发文档](https://docs.google.com/document/d/1xbGWsV8spQXA2ZBCmN-xJjcNvdJEWwo77edUyXh0aKs/edit) (处理数据神器) |
 ## 项目提交要求(Submission Guide)
 
 **⏰Demo提交截止时间：** **2026.1.30 23:59 前（UTC+8）**
