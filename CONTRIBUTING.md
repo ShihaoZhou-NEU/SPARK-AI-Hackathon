@@ -18,7 +18,7 @@
 
 ### 📝 提交规则
 
-- **GitHub 留档**: 所有参赛项目都必须在 GitHub 报名仓库提交。
+- **GitHub 留档**: 所有参赛项目都必须在  [**GitHub 报名仓库**](https://github.com/CasualHackathon/SPARK-AI-Hackathon/issues/new?template=submission.md) 提交。
 - **作品形式**:
     - **代码实现 (推荐)**: 我们鼓励并优先推荐有实际代码运行的作品。
     - **非代码形式**: 即使你不会写代码也可以参赛！可以提交**产品方案文档、UI 设计稿、业务流程图**等创意想法。
