@@ -45,7 +45,7 @@
     <img src="./materials/images/QR code.png" alt="QR Code" width="200" />
   </p>
 
-**报名教程：**
+ [**报名教程**](https://github.com/CasualHackathon/SPARK-AI-Hackathon/tree/main?tab=contributing-ov-file) ：
 
 - [Bilibili][VIDEO_TUTORIAL_BILIBILI]
 - [YouTube][VIDEO_TUTORIAL_YOUTUBE]
