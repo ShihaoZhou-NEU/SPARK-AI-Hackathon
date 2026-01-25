@@ -162,7 +162,7 @@
 - 项目将按照提交顺序进行展示
 - Zoom 链接：[ZOOM_LINK]
 
-## 🏆 Awards & Participation | 奖项与参赛规则
+## 🏆 奖励与规则(Awards & Evaluation)
 
 ### 👥 组队规则
 * **自由组队**: 支持跨背景自由组队。
