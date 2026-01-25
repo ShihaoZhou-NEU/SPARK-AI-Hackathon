@@ -9,49 +9,43 @@
  * @returns {Object} 解析后的字段对象
  */
 function parseIssueFields(bodyString) {
-    const lines = bodyString.split('\n');
+    const lines = bodyString.split('\n').map(l => l.trim());
     const fields = {};
-    let currentField = null;
+    let currentKey = null;
     let currentValue = [];
 
     for (let i = 0; i < lines.length; i++) {
-        const line = lines[i].trim();
+        const line = lines[i];
 
-        // 匹配字段行 **FieldName**:
-        const fieldMatch = line.match(/^\*\*(.+?)\*\*\s*[:：]\s*(.*)$/);
+        // 检查是否是新字段（以 ** 开头且包含冒号）
+        const isFieldLine = line.startsWith('**') && (line.includes(':') || line.includes('：'));
 
-        if (fieldMatch) {
+        if (isFieldLine) {
             // 保存之前的字段
-            if (currentField) {
-                fields[currentField] = currentValue.join('\n').trim();
+            if (currentKey) {
+                fields[currentKey] = currentValue.join('\n').trim();
             }
 
-            // 开始新字段
-            currentField = fieldMatch[1].trim();
-            const inlineValue = fieldMatch[2].trim();
+            // 解析新字段
+            const colonIndex = line.indexOf(':') !== -1 ? line.indexOf(':') : line.indexOf('：');
+            let key = line.slice(0, colonIndex).trim();
+            let value = line.slice(colonIndex + 1).trim();
 
-            // 如果冒号后面直接有值，保存它
-            if (inlineValue) {
-                currentValue = [inlineValue];
-            } else {
-                currentValue = [];
-            }
-        } else if (currentField && line && !line.startsWith('**')) {
-            // 如果正在收集字段值，且这行不是新字段，添加到当前值
+            // 去掉 ** 标记
+            key = key.replace(/^\*\*/, '').replace(/\*\*$/, '');
+            value = value.replace(/^\*\*\s*/, '').replace(/\s*\*\*$/, '');
+
+            currentKey = key;
+            currentValue = value ? [value] : [];
+        } else if (currentKey && line && !line.startsWith('_') && !line.startsWith('---')) {
+            // 累积多行值（跳过提示行）
             currentValue.push(line);
-        } else if (!line || line.startsWith('---')) {
-            // 空行或分隔符，保存当前字段
-            if (currentField) {
-                fields[currentField] = currentValue.join('\n').trim();
-                currentField = null;
-                currentValue = [];
-            }
         }
     }
 
     // 保存最后一个字段
-    if (currentField) {
-        fields[currentField] = currentValue.join('\n').trim();
+    if (currentKey) {
+        fields[currentKey] = currentValue.join('\n').trim();
     }
 
     return fields;

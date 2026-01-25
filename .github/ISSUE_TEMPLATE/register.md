@@ -8,9 +8,11 @@ assignees: ""
 
 **Name [姓名]:**
 
-**ContactMethod [联系方式] (格式: Telegram: @username，微信: username，邮箱: email@example.com):**
+**ContactMethod [联系方式]:**
+_格式: Telegram: @username，微信: username，邮箱: email@example.com_
 
-**Wallet Address [钱包地址] (您在以太坊主网的钱包地址或 ENS 域名):**
+**Wallet Address [钱包地址]:**
+_您在以太坊主网的钱包地址或 ENS 域名_
 
 **WantsTeam [组队意愿（是/否）]:**
 

@@ -22,18 +22,15 @@ const FIELD_NAMES = {
     REGISTRATION: {
         NAME: 'Name [姓名]',
         CONTACT_METHOD: 'ContactMethod [联系方式]',
-        WANTS_TEAM: 'WantsTeam [组队意愿（是/否）]',
+        WANTS_TEAM: 'WantsTeam [组队意愿]',
         COMMENT: 'Comment [备注]'
     },
     // 项目提交字段
     SUBMISSION: {
-        NAME: 'Name [姓名]',
-        PROJECT_NAME: 'ProjectName [项目名称]',
-        GITHUB_USER: 'GithubUser [Github用户名]',
-        PROJECT_DESCRIPTION: 'Brief description [一句话简介]',
-        PROJECT_MEMBERS: 'Team Lead [负责人]',
-        WALLET_ADDRESS: 'Team Wallet Address [团队钱包地址]',
-        REPO_LINK: 'Github Repo Link [Github 地址]'
+        PROJECT_DESCRIPTION: '**Brief description [一句话简介]**',
+        PROJECT_MEMBERS: '**Team Lead [负责人]**',
+        WALLET_ADDRESS: '**Team Wallet Address [团队钱包地址]**',
+        REPO_LINK: '**Github Repo Link [Github 地址]**'
     }
 };
 
