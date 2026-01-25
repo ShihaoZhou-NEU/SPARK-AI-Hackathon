@@ -87,7 +87,7 @@ function generateRegistrationTable(issues) {
     // Extract fields based on the "register.md" template structure
     // Improved Regex keys to match the exact template structure
     // We look for the literal strings used in the template
-    const name = extractValue(body, /\*\*Name \[姓名\]:/);
+    const name = extractValue(body, /\*\*Name \[姓名\]:/) || (issue.title || '');
     const contact = extractValue(body, /\*\*ContactMethod.*?(:|：)/); // Handle potential Chinese colon
     const wantsTeam = extractValue(body, /\*\*WantsTeam.*?(:|：)/);
     const comment = extractValue(body, /\*\*Comment.*?(:|：)/);
@@ -122,7 +122,7 @@ function generateSubmissionTable(issues) {
     const body = issue.body || '';
 
     // Extract fields based on the "submission.md" template structure
-    const projectName = extractValue(body, /\*\*ProjectName.*?(:|：)/);
+    const projectName = extractValue(body, /\*\*ProjectName.*?(:|：)/) || (issue.title || '');
     const description = extractValue(body, /\*\*Brief description.*?(:|：)/); // Should match the one sentence description
     const repoLink = extractValue(body, /\*\*Github Repo Link.*?(:|：)/);
 
