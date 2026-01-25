@@ -183,7 +183,7 @@
     * *注：Permission 学员不包含学分奖励，重点聚焦于奖金与荣誉勋章。*
 *。
 
-### 🔍 评审维度
+### 🔍 评审维度(Judging Criteria)
 我们的评审将综合考虑以下四个核心方面：
 
 1.  **技术实现完整度 (Technical Completeness)**
