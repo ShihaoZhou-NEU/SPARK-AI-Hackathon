@@ -16,12 +16,23 @@ class ReadmeManager {
     }
 
     /**
+     * 获取 CONTRIBUTING 文件路径
+     * @returns {string} CONTRIBUTING 文件路径
+     */
+    static getContributingPath() {
+        return path.join(__dirname, '../../../CONTRIBUTING.md');
+    }
+
+    /**
      * 更新 README 中指定区域的内容
      * @param {string} sectionType - 区域类型 ('REGISTRATION' 或 'SUBMISSION')
      * @param {string} tableContent - 表格内容
      */
     static updateReadmeSection(sectionType, tableContent) {
-        const readmePath = this.getReadmePath();
+        // REGISTRATION 表格在 CONTRIBUTING.md 中，SUBMISSION 表格在 README.md 中
+        const readmePath = sectionType === 'REGISTRATION'
+            ? this.getContributingPath()
+            : this.getReadmePath();
         const markers = README_MARKERS[sectionType];
 
         if (!markers) {
@@ -36,7 +47,8 @@ class ReadmeManager {
         );
 
         FileManager.writeFileContent(readmePath, updatedContent);
-        console.log(`README.md ${sectionType} 区域已更新`);
+        const fileName = sectionType === 'REGISTRATION' ? 'CONTRIBUTING.md' : 'README.md';
+        console.log(`${fileName} ${sectionType} 区域已更新`);
     }
 
     /**
