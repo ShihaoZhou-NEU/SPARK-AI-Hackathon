@@ -179,10 +179,14 @@ try {
   if (fs.existsSync(registrationsPath)) {
     registrations = JSON.parse(fs.readFileSync(registrationsPath, 'utf8'));
     console.log(`Found ${registrations.length} registrations.`);
-    const regTable = generateRegistrationTable(registrations);
+    if (registrations.length > 0) {
+      const regTable = generateRegistrationTable(registrations);
 
-    // Update CONTRIBUTING.md
-    contributingContent = replaceSection(contributingContent, '<!-- Registration start -->', '<!-- Registration end -->', regTable);
+      // Update CONTRIBUTING.md
+      contributingContent = replaceSection(contributingContent, '<!-- Registration start -->', '<!-- Registration end -->', regTable);
+    } else {
+      console.log('Registrations list is empty, skipping registration update.');
+    }
   } else {
     console.log('No registrations file found, skipping registration update.');
   }
@@ -191,10 +195,14 @@ try {
   if (fs.existsSync(submissionsPath)) {
     submissions = JSON.parse(fs.readFileSync(submissionsPath, 'utf8'));
     console.log(`Found ${submissions.length} submissions.`);
-    const subTable = generateSubmissionTable(submissions);
+    if (submissions.length > 0) {
+      const subTable = generateSubmissionTable(submissions);
 
-    // Update CONTRIBUTING.md
-    contributingContent = replaceSection(contributingContent, '<!-- Submission start -->', '<!-- Submission end -->', subTable);
+      // Update CONTRIBUTING.md
+      contributingContent = replaceSection(contributingContent, '<!-- Submission start -->', '<!-- Submission end -->', subTable);
+    } else {
+      console.log('Submissions list is empty, skipping submission update.');
+    }
   } else {
     console.log('No submissions file found, skipping submission update.');
   }
