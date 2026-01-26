@@ -4,9 +4,10 @@
  */
 
 // 目录路径配置
+const path = require('path');
 const DIRECTORIES = {
-    REGISTRATION: '../../../registration',
-    SUBMISSION: '../../../submissions',
+    REGISTRATION: path.resolve(__dirname, '../../../registration'),
+    SUBMISSION: path.resolve(__dirname, '../../../submissions'),
     SCRIPTS: __dirname
 };
 
