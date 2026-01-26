@@ -14,8 +14,7 @@ class UserManager {
      * @returns {string} 注册文件路径
      */
     static getRegistrationFilePath(githubUser) {
-        const registrationDir = path.join(__dirname, DIRECTORIES.REGISTRATION);
-        return path.join(registrationDir, `${githubUser}.md`);
+        return path.join(DIRECTORIES.REGISTRATION, `${githubUser}.md`);
     }
 
     /**

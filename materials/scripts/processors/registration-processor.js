@@ -86,8 +86,7 @@ class RegistrationProcessor {
      * @param {Object} registrationData - 注册数据
      */
     static createRegistrationFile(githubUser, registrationData) {
-        const registrationDir = path.join(__dirname, DIRECTORIES.REGISTRATION);
-        FileManager.ensureDirectoryExists(registrationDir);
+        FileManager.ensureDirectoryExists(DIRECTORIES.REGISTRATION);
 
         const content = this.generateRegistrationFileContent(githubUser, registrationData);
         const filePath = UserManager.getRegistrationFilePath(githubUser);
@@ -119,11 +118,10 @@ ${FIELD_NAMES.REGISTRATION.COMMENT}: ${comment}
      * 更新注册表格
      */
     static updateRegistrationTable() {
-        const registrationDir = path.join(__dirname, DIRECTORIES.REGISTRATION);
-        const files = FileManager.getDirectoryFiles(registrationDir, '.md');
+        const files = FileManager.getDirectoryFiles(DIRECTORIES.REGISTRATION, '.md');
 
         const rows = files.map(file => {
-            const filePath = path.join(registrationDir, file);
+            const filePath = path.join(DIRECTORIES.REGISTRATION, file);
             const content = FileManager.readFileContent(filePath);
             const githubUser = path.basename(file, '.md');
 

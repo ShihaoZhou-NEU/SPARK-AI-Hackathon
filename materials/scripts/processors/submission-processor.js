@@ -84,7 +84,7 @@ class SubmissionProcessor {
      * @returns {string} 提交文件路径
      */
     static getSubmissionFilePath(githubUser) {
-        const submissionDir = path.join(__dirname, DIRECTORIES.SUBMISSION, githubUser);
+        const submissionDir = path.join(DIRECTORIES.SUBMISSION, githubUser);
         return path.join(submissionDir, FILE_NAMES.HACKATHON_INFO);
     }
 
@@ -94,7 +94,7 @@ class SubmissionProcessor {
      * @param {Object} submissionData - 提交数据
      */
     static createSubmissionFile(githubUser, submissionData) {
-        const submissionDir = path.join(__dirname, DIRECTORIES.SUBMISSION, githubUser);
+        const submissionDir = path.join(DIRECTORIES.SUBMISSION, githubUser);
         FileManager.ensureDirectoryExists(submissionDir);
 
         const content = this.generateSubmissionFileContent(githubUser, submissionData);
@@ -128,7 +128,7 @@ ${FIELD_NAMES.SUBMISSION.TEAM_WALLET_ADDRESS}: ${teamWalletAddress}`;
      * 更新提交表格
      */
     static updateSubmissionTable() {
-        const submissionRoot = path.join(__dirname, DIRECTORIES.SUBMISSION);
+        const submissionRoot = DIRECTORIES.SUBMISSION;
         const userFolders = FileManager.getSubDirectories(submissionRoot);
 
         const rows = userFolders.map(folder => {
