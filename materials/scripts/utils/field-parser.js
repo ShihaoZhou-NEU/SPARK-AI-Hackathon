@@ -5,46 +5,45 @@
 
 /**
  * 解析 Issue Body 中的字段
+ * 支持新格式：**FieldName** (description) 后跟 > 符号，内容在 > 后
  * @param {string} bodyString - Issue body 内容
  * @returns {Object} 解析后的字段对象
  */
 function parseIssueFields(bodyString) {
-    const lines = bodyString.split('\n').map(l => l.trim());
+    const lines = bodyString.split('\n');
     const fields = {};
     let currentKey = null;
-    let currentValue = [];
+    let collectingValue = false;
 
     for (let i = 0; i < lines.length; i++) {
-        const line = lines[i];
+        const line = lines[i].trim();
 
-        // 字段行必须包含中文方括号 [ ] 和冒号
-        const hasChineseBracket = line.includes('[') && line.includes(']');
-        const hasColon = line.includes(':') || line.includes('：');
-        const isPromptLine = (line.startsWith('_') && line.endsWith('_') && line.length > 2) || line.startsWith('---');
-        const isFieldLine = hasChineseBracket && hasColon && !isPromptLine;
+        // 检测字段行：**FieldName** (description)
+        const fieldMatch = line.match(/^\*\*([A-Za-z\s]+)\*\*/);
 
-        if (isFieldLine) {
-            // 保存之前的字段
-            if (currentKey) {
-                fields[currentKey] = currentValue.join('\n').trim();
+        if (fieldMatch) {
+            // 找到新字段
+            currentKey = fieldMatch[1].trim();
+            collectingValue = false;
+            fields[currentKey] = '';
+        } else if (currentKey && line.startsWith('>')) {
+            // 找到值的开始标记
+            collectingValue = true;
+            const value = line.substring(1).trim();
+            if (value) {
+                fields[currentKey] = value;
             }
-
-            // 解析新字段
-            const colonIndex = line.indexOf(':') !== -1 ? line.indexOf(':') : line.indexOf('：');
-            const key = line.slice(0, colonIndex).trim();
-            const value = line.slice(colonIndex + 1).trim();
-
-            currentKey = key;
-            currentValue = value ? [value] : [];
-        } else if (currentKey && line && !isPromptLine) {
-            // 累积多行值
-            currentValue.push(line);
+        } else if (collectingValue && line && !line.startsWith('**') && !line.startsWith('#')) {
+            // 继续收集多行值
+            if (fields[currentKey]) {
+                fields[currentKey] += '\n' + line;
+            } else {
+                fields[currentKey] = line;
+            }
+        } else if (line.startsWith('**') || line.startsWith('#')) {
+            // 遇到新的标题或字段，停止收集
+            collectingValue = false;
         }
-    }
-
-    // 保存最后一个字段
-    if (currentKey) {
-        fields[currentKey] = currentValue.join('\n').trim();
     }
 
     return fields;

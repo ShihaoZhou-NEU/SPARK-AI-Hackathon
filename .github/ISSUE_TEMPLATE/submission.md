@@ -6,21 +6,24 @@ labels: "submission"
 assignees: ""
 ---
 
-ProjectName [项目名称]:
+## 参赛项目提交
 
-Track [赛道]:
+> 📝 **请在 ">" 后填写内容**
 
-TechStack [技术栈]:
+**ProjectName** (请输入您的项目名称 | 必填)
+>
 
-Brief description [一句话简介]:
+**Track** (赛道 | 必填)
+>
 
-ProjectDescription [项目描述]:
+**ProjectDescription** (项目描述 | 必填)
+>
 
-Team Lead [负责人]:
+**Github Repo Link** (开源仓库地址 - 项目必须开源)
+>
 
-Team Wallet Address [团队钱包地址]:
-_用于接收奖金，以太坊主网地址或 ENS 域名_
+**Team Lead** (项目负责人姓名 | 必填)
+>
 
-Github Repo Link [Github 地址]:
-
-Demo Link [演示链接]:
+**Team Wallet Address** (列出所有团队成员的钱包地址，用逗号分隔，例如：Alice:0x12345...，Bob:0x12345...):
+>

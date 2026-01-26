@@ -59,8 +59,11 @@ class RegistrationProcessor {
     static extractRegistrationData(fields) {
         return {
             name: fields[FIELD_NAMES.REGISTRATION.NAME] || '',
+            introduction: fields[FIELD_NAMES.REGISTRATION.INTRODUCTION] || '',
             contactMethod: fields[FIELD_NAMES.REGISTRATION.CONTACT_METHOD] || '',
+            walletAddress: fields[FIELD_NAMES.REGISTRATION.WALLET_ADDRESS] || '',
             WantsTeam: fields[FIELD_NAMES.REGISTRATION.WANTS_TEAM] || '',
+            track: fields[FIELD_NAMES.REGISTRATION.TRACK] || '',
             comment: fields[FIELD_NAMES.REGISTRATION.COMMENT] || ''
         };
     }
@@ -71,10 +74,10 @@ class RegistrationProcessor {
      * @param {string} githubUser - GitHub 用户名
      */
     static validateRegistrationData(registrationData, githubUser) {
-        const { name, contactMethod, WantsTeam } = registrationData;
+        const { name, introduction } = registrationData;
 
-        if (!name || !githubUser || !WantsTeam || !contactMethod) {
-            console.error('注册字段不全，缺少必填信息');
+        if (!name || !introduction || !githubUser) {
+            console.error('注册字段不全，缺少必填信息（姓名和个人介绍为必填项）');
             process.exit(1);
         }
     }
@@ -102,13 +105,16 @@ class RegistrationProcessor {
      * @returns {string} 文件内容
      */
     static generateRegistrationFileContent(githubUser, registrationData) {
-        const { name, contactMethod, WantsTeam, comment } = registrationData;
+        const { name, introduction, contactMethod, walletAddress, WantsTeam, track, comment } = registrationData;
 
         return `# ${githubUser}
 
 ${FIELD_NAMES.REGISTRATION.NAME}: ${name}
+${FIELD_NAMES.REGISTRATION.INTRODUCTION}: ${introduction}
 ${FIELD_NAMES.REGISTRATION.CONTACT_METHOD}: ${contactMethod}
+${FIELD_NAMES.REGISTRATION.WALLET_ADDRESS}: ${walletAddress}
 ${FIELD_NAMES.REGISTRATION.WANTS_TEAM}: ${WantsTeam}
+${FIELD_NAMES.REGISTRATION.TRACK}: ${track}
 ${FIELD_NAMES.REGISTRATION.COMMENT}: ${comment}
 `;
     }
@@ -128,8 +134,11 @@ ${FIELD_NAMES.REGISTRATION.COMMENT}: ${comment}
             return {
                 name: parseFieldFromContent(content, FIELD_NAMES.REGISTRATION.NAME),
                 githubID: githubUser,
+                introduction: parseFieldFromContent(content, FIELD_NAMES.REGISTRATION.INTRODUCTION),
                 contactMethod: parseFieldFromContent(content, FIELD_NAMES.REGISTRATION.CONTACT_METHOD),
+                walletAddress: parseFieldFromContent(content, FIELD_NAMES.REGISTRATION.WALLET_ADDRESS),
                 WantsTeam: parseFieldFromContent(content, FIELD_NAMES.REGISTRATION.WANTS_TEAM),
+                track: parseFieldFromContent(content, FIELD_NAMES.REGISTRATION.TRACK),
                 comment: parseFieldFromContent(content, FIELD_NAMES.REGISTRATION.COMMENT)
             };
         });
@@ -151,14 +160,14 @@ ${FIELD_NAMES.REGISTRATION.COMMENT}: ${comment}
      * @returns {string} 表格内容
      */
     static generateRegistrationTable(rows) {
-        let table = '| # | 姓名 | GitHub ID | 联系方式 | 组队意愿 | 备注 | 更新资料 |\n| --- | ---- | ----------- | ----------- | ----------- | ------- | ------- |\n';
+        let table = '| # | 姓名 | GitHub ID | 个人介绍 | 联系方式 | 钱包地址 | 组队意愿 | 赛道选择 | 备注 | 更新资料 |\n| --- | ---- | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- | ------- | ------- |\n';
 
         rows.forEach((row, index) => {
             const issueTitle = `${GITHUB_CONFIG.ISSUE_TITLE_PREFIXES.REGISTRATION} - ${row.name}`;
-            const issueBody = `${FIELD_NAMES.REGISTRATION.NAME}: ${row.name}\n${FIELD_NAMES.REGISTRATION.CONTACT_METHOD}: ${row.contactMethod}\n${FIELD_NAMES.REGISTRATION.WANTS_TEAM}: ${row.WantsTeam}\n${FIELD_NAMES.REGISTRATION.COMMENT}: ${row.comment}`;
+            const issueBody = `${FIELD_NAMES.REGISTRATION.NAME}: ${row.name}\n${FIELD_NAMES.REGISTRATION.INTRODUCTION}: ${row.introduction}\n${FIELD_NAMES.REGISTRATION.CONTACT_METHOD}: ${row.contactMethod}\n${FIELD_NAMES.REGISTRATION.WALLET_ADDRESS}: ${row.walletAddress}\n${FIELD_NAMES.REGISTRATION.WANTS_TEAM}: ${row.WantsTeam}\n${FIELD_NAMES.REGISTRATION.TRACK}: ${row.track}\n${FIELD_NAMES.REGISTRATION.COMMENT}: ${row.comment}`;
             const issueUrl = ReadmeManager.generateIssueUrl(issueTitle, issueBody);
 
-            table += `| ${index + 1} | ${row.name} | ${row.githubID} | ${row.contactMethod} | ${row.WantsTeam} |${row.comment} | [编辑](${issueUrl}) |\n`;
+            table += `| ${index + 1} | ${row.name} | ${row.githubID} | ${row.introduction} | ${row.contactMethod} | ${row.walletAddress} | ${row.WantsTeam} | ${row.track} | ${row.comment} | [编辑](${issueUrl}) |\n`;
         });
 
         return table;

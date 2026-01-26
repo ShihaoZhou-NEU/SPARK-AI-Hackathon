@@ -10,43 +10,51 @@ const path = require('path');
 
 // Paths to necessary files
 const workspace = process.env.GITHUB_WORKSPACE || process.cwd();
-const registrationDocPath = process.env.REGISTRATION_DOC_PATH
-  ? path.resolve(workspace, process.env.REGISTRATION_DOC_PATH)
-  : path.join(workspace, 'docs', 'REGISTRATION.md');
 const contributingPath = path.join(workspace, 'CONTRIBUTING.md');
 const readmePath = path.join(workspace, 'README.md');
 const registrationsPath = process.env.REGISTRATIONS_PATH;
 const submissionsPath = process.env.SUBMISSIONS_PATH;
 
-// Helper to extract value from issue body
-// Matches **Key:** ...value... until the next **Key:** or End of String
-function extractValue(body, keyRegex) {
+// Helper to extract value from issue body (new format)
+// Matches **FieldName** (description) followed by > and the value
+function extractValueNewFormat(body, fieldName) {
   if (!body) return '';
 
-  // Find the start of the key
-  const match = body.match(keyRegex);
-  if (!match) return '';
-
-  // Start extracting after the matched key
-  const startIndex = match.index + match[0].length;
-  let remaining = body.substring(startIndex);
-
-  // If the key was wrapped in bold (e.g. **Key:**), the trailing ** might be here.
-  // Remove it if present.
-  if (remaining.startsWith('**')) {
-    remaining = remaining.substring(2);
-  }
-
-  // Find the start of the next key to determine where the current value ends.
-  // Support both bold and plain field labels (e.g. "**Name [姓名]:**" or "Name [姓名]:").
-  const nextKeyRegex = /\r?\n\s*(?:\*\*)?[^\n]*\[.*?\][^\n]*(:|：)/;
-  const nextMatch = remaining.match(nextKeyRegex);
-
+  // Create regex to match **FieldName** followed by content in parentheses, then >
+  const lines = body.split('\n');
+  let foundField = false;
   let value = '';
-  if (nextMatch) {
-    value = remaining.substring(0, nextMatch.index);
-  } else {
-    value = remaining;
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i].trim();
+
+    // Check if this line contains our field
+    if (line.includes(`**${fieldName}**`)) {
+      foundField = true;
+      continue;
+    }
+
+    // If we found the field, look for the > line
+    if (foundField && line.startsWith('>')) {
+      value = line.substring(1).trim();
+      // Continue collecting multi-line values
+      for (let j = i + 1; j < lines.length; j++) {
+        const nextLine = lines[j].trim();
+        // Stop if we hit another field or empty line followed by **
+        if (nextLine.startsWith('**') || nextLine.startsWith('#')) {
+          break;
+        }
+        if (nextLine && !nextLine.startsWith('>')) {
+          value += '\n' + nextLine;
+        }
+      }
+      break;
+    }
+
+    // Reset if we hit another field without finding a value
+    if (foundField && line.startsWith('**')) {
+      foundField = false;
+    }
   }
 
   return value.trim();
@@ -66,16 +74,54 @@ function formatCol(text) {
 
 /**
  * Generates the Markdown table for Registrations.
- * Columns: Name, GitHub ID, Contact, WantsTeam, Comment, Link
+ * Columns: Name, GitHub ID, Introduction, Contact, Wallet, WantsTeam, Track, Comment, Link
  * @param {Array} issues - Array of issue objects
  * @returns {string} The complete Markdown table string
  */
 function generateRegistrationTable(issues) {
   // Define Table Header
-  let table = '| # | 姓名 | GitHub ID | 联系方式 | 组队意愿 | 赛道选择 | 备注 | 更新资料 |\n';
-  table += '| --- | --------- | --------- | -------- | -------- | -------- | ---- | -------- |\n';
+  let table = '| # | 姓名 | GitHub ID | 个人介绍 | 联系方式 | 钱包地址 | 组队意愿 | 赛道选择 | 备注 | 更新资料 |\n';
+  table += '| --- | --------- | --------- | -------- | -------- | -------- | -------- | -------- | ---- | -------- |\n';
 
   // Return placeholder if list is empty
+  if (!issues || issues.length === 0) {
+    table += '| - | 待更新... | - | - | - | - | - | - | - | - |\n';
+    return table;
+  }
+
+  // Iterate through issues and build rows
+  issues.forEach((issue, index) => {
+    const body = issue.body || '';
+
+    // Extract fields based on the new template structure: **FieldName** followed by >
+    const name = extractValueNewFormat(body, 'Name') || (issue.title || '').replace('[报名] ', '');
+    const introduction = extractValueNewFormat(body, 'Introduction');
+    const contact = extractValueNewFormat(body, 'ContactMethod');
+    const wallet = extractValueNewFormat(body, 'Wallet Address');
+    const wantsTeam = extractValueNewFormat(body, 'WantsTeam');
+    const track = extractValueNewFormat(body, 'Track');
+    const comment = extractValueNewFormat(body, 'Comment');
+
+    const githubId = issue.author ? issue.author.login : 'unknown';
+    const issueUrl = issue.url;
+
+    table += `| ${index + 1} | ${formatCol(name)} | [@${githubId}](https://github.com/${githubId}) | ${formatCol(introduction)} | ${formatCol(contact)} | ${formatCol(wallet)} | ${formatCol(wantsTeam)} | ${formatCol(track)} | ${formatCol(comment)} | [编辑](${issueUrl}) |\n`;
+  });
+
+  return table;
+}
+
+/**
+ * Generates the Markdown table for Project Submissions.
+ * Columns: ProjectName, Track, GitHub ID, Description, Team Lead, Repo Link, Date
+ * @param {Array} issues - Array of issue objects
+ * @returns {string} The complete Markdown table string
+ */
+function generateSubmissionTable(issues) {
+  // Define Table Header
+  let table = '| # | 项目名称 | 赛道 | GitHub ID | 项目描述 | 负责人 | 项目链接 | 提交时间 |\n';
+  table += '| --- | --------- | --------- | --------- | -------- | -------- | -------- | -------- |\n';
+
   if (!issues || issues.length === 0) {
     table += '| - | 待更新... | - | - | - | - | - | - |\n';
     return table;
@@ -85,54 +131,18 @@ function generateRegistrationTable(issues) {
   issues.forEach((issue, index) => {
     const body = issue.body || '';
 
-    // Extract fields based on the "register.md" template structure
-    // Improved Regex keys to match the exact template structure
-    // We look for the literal strings used in the template
-    const name = extractValue(body, /(?:\*\*)?Name \[姓名\]:(?:\*\*)?/) || (issue.title || '');
-    const contact = extractValue(body, /(?:\*\*)?ContactMethod.*?(:|：)(?:\*\*)?/); // Handle potential Chinese colon
-    const wantsTeam = extractValue(body, /(?:\*\*)?WantsTeam.*?(:|：)(?:\*\*)?/);
-    const track = extractValue(body, /(?:\*\*)?(Track|赛道).*?(:|：)(?:\*\*)?/);
-    const comment = extractValue(body, /(?:\*\*)?Comment.*?(:|：)(?:\*\*)?/);
-
-    const githubId = issue.author ? issue.author.login : 'unknown';
-    const issueUrl = issue.url;
-
-    table += `| ${index + 1} | ${formatCol(name)} | [@${githubId}](https://github.com/${githubId}) | ${formatCol(contact)} | ${formatCol(wantsTeam)} | ${formatCol(track)} | ${formatCol(comment)} | [编辑](${issueUrl}) |\n`;
-  });
-
-  return table;
-}
-
-/**
- * Generates the Markdown table for Project Submissions.
- * Columns: ProjectName, GitHub ID, Description, Repo Link, Date
- * @param {Array} issues - Array of issue objects
- * @returns {string} The complete Markdown table string
- */
-function generateSubmissionTable(issues) {
-  // Define Table Header
-  let table = '| # | 项目名称 | GitHub ID | 项目描述 | 项目链接 | 提交时间 |\n';
-  table += '| --- | --------- | --------- | -------- | -------- | -------- |\n';
-
-  if (!issues || issues.length === 0) {
-    table += '| - | 待更新... | - | - | - | - |\n';
-    return table;
-  }
-
-  // Iterate through issues and build rows
-  issues.forEach((issue, index) => {
-    const body = issue.body || '';
-
-    // Extract fields based on the "submission.md" template structure
-    const projectName = extractValue(body, /(?:\*\*)?ProjectName.*?(:|：)(?:\*\*)?/) || (issue.title || '');
-    const description = extractValue(body, /(?:\*\*)?Brief description.*?(:|：)(?:\*\*)?/); // Should match the one sentence description
-    const repoLink = extractValue(body, /(?:\*\*)?Github Repo Link.*?(:|：)(?:\*\*)?/);
+    // Extract fields based on the new template structure: **FieldName** followed by >
+    const projectName = extractValueNewFormat(body, 'ProjectName') || (issue.title || '').replace('[提交] ', '');
+    const track = extractValueNewFormat(body, 'Track');
+    const description = extractValueNewFormat(body, 'ProjectDescription');
+    const repoLink = extractValueNewFormat(body, 'Github Repo Link');
+    const teamLead = extractValueNewFormat(body, 'Team Lead');
 
     const githubId = issue.author ? issue.author.login : 'unknown';
     // Format date as YYYY-MM-DD
     const date = issue.createdAt ? issue.createdAt.split('T')[0] : '-';
 
-    table += `| ${index + 1} | ${formatCol(projectName)} | [@${githubId}](https://github.com/${githubId}) | ${formatCol(description)} | [Repo](${repoLink}) | ${date} |\n`;
+    table += `| ${index + 1} | ${formatCol(projectName)} | ${formatCol(track)} | [@${githubId}](https://github.com/${githubId}) | ${formatCol(description)} | ${formatCol(teamLead)} | [Repo](${repoLink}) | ${date} |\n`;
   });
 
   return table;
@@ -163,12 +173,8 @@ function replaceSection(content, startMarker, endMarker, newContent) {
 
 // --- Main Execution ---
 try {
-  // Read current registration doc
-  let readmeContent = fs.readFileSync(registrationDocPath, 'utf8');
   let registrations = [];
   let submissions = [];
-  let regTable = '';
-  let subTable = '';
 
   // Read CONTRIBUTING.md
   let contributingContent = fs.readFileSync(contributingPath, 'utf8');
@@ -179,8 +185,7 @@ try {
     console.log(`Found ${registrations.length} registrations.`);
     const regTable = generateRegistrationTable(registrations);
 
-    // Update both files
-    readmeContent = replaceSection(readmeContent, '<!-- Registration start -->', '<!-- Registration end -->', regTable);
+    // Update CONTRIBUTING.md
     contributingContent = replaceSection(contributingContent, '<!-- Registration start -->', '<!-- Registration end -->', regTable);
   } else {
     console.log('No registrations file found, skipping registration update.');
@@ -192,24 +197,20 @@ try {
     console.log(`Found ${submissions.length} submissions.`);
     const subTable = generateSubmissionTable(submissions);
 
-    // Update both files
-    readmeContent = replaceSection(readmeContent, '<!-- Submission start -->', '<!-- Submission end -->', subTable);
+    // Update CONTRIBUTING.md
     contributingContent = replaceSection(contributingContent, '<!-- Submission start -->', '<!-- Submission end -->', subTable);
   } else {
     console.log('No submissions file found, skipping submission update.');
   }
 
-  // Write changes back to both files
-  fs.writeFileSync(registrationDocPath, readmeContent);
-  console.log('Registration doc updated successfully.');
-
+  // Write changes back to CONTRIBUTING.md
   fs.writeFileSync(contributingPath, contributingContent);
   console.log('CONTRIBUTING.md updated successfully.');
 
-  // Update README summary only (counts + link)
+  // Update README summary only (counts)
   if (fs.existsSync(readmePath)) {
     let mainReadme = fs.readFileSync(readmePath, 'utf8');
-    const summaryContent = `报名人数：${registrations.length}｜提交人数：${submissions.length}（名单详见 \`docs/REGISTRATION.md\`）`;
+    const summaryContent = `报名人数：${registrations.length}｜提交人数：${submissions.length}（名单详见 \`CONTRIBUTING.md\`）`;
     mainReadme = replaceSection(mainReadme, '<!-- Registration summary start -->', '<!-- Registration summary end -->', summaryContent);
     fs.writeFileSync(readmePath, mainReadme);
     console.log('README summary updated successfully.');

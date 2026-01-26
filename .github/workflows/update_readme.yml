@@ -71,13 +71,12 @@ jobs:
           GITHUB_WORKSPACE: ${{ github.workspace }}
           REGISTRATIONS_PATH: ./registrations.json
           SUBMISSIONS_PATH: ./submissions.json
-          REGISTRATION_DOC_PATH: docs/REGISTRATION.md
 
       - name: Commit and Push
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add docs/REGISTRATION.md CONTRIBUTING.md README.md
+          git add CONTRIBUTING.md README.md
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else

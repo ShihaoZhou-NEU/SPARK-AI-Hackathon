@@ -57,10 +57,11 @@ class SubmissionProcessor {
     static extractSubmissionData(fields, displayName, githubUser) {
         return {
             projectName: fields[FIELD_NAMES.SUBMISSION.PROJECT_NAME] || '',
+            track: fields[FIELD_NAMES.SUBMISSION.TRACK] || '',
             projectDescription: fields[FIELD_NAMES.SUBMISSION.PROJECT_DESCRIPTION] || '',
-            projectMembers: fields[FIELD_NAMES.SUBMISSION.PROJECT_MEMBERS] || displayName,
-            walletAddress: fields[FIELD_NAMES.SUBMISSION.WALLET_ADDRESS] || '',
-            repoLink: fields[FIELD_NAMES.SUBMISSION.REPO_LINK] || ''
+            repoLink: fields[FIELD_NAMES.SUBMISSION.REPO_LINK] || '',
+            teamLead: fields[FIELD_NAMES.SUBMISSION.TEAM_LEAD] || displayName,
+            teamWalletAddress: fields[FIELD_NAMES.SUBMISSION.TEAM_WALLET_ADDRESS] || ''
         };
     }
 
@@ -69,10 +70,10 @@ class SubmissionProcessor {
      * @param {Object} submissionData - 提交数据
      */
     static validateSubmissionData(submissionData) {
-        const { projectName, repoLink } = submissionData;
+        const { projectName, track, projectDescription, repoLink, teamLead } = submissionData;
 
-        if (!projectName || !repoLink) {
-            console.error('项目提交字段不全，缺少必填信息');
+        if (!projectName || !track || !projectDescription || !repoLink || !teamLead) {
+            console.error('项目提交字段不全，缺少必填信息（项目名称、赛道、项目描述、仓库链接、负责人为必填项）');
             process.exit(1);
         }
     }
@@ -110,18 +111,17 @@ class SubmissionProcessor {
      * @returns {string} 文件内容
      */
     static generateSubmissionFileContent(githubUser, submissionData) {
-        const displayName = UserManager.getUserDisplayName(githubUser);
-        const { projectName, projectDescription, projectMembers, walletAddress, repoLink } = submissionData;
+        const { projectName, track, projectDescription, repoLink, teamLead, teamWalletAddress } = submissionData;
 
         return `# ${projectName}
 
-${FIELD_NAMES.SUBMISSION.NAME}: ${displayName}
-${FIELD_NAMES.SUBMISSION.GITHUB_USER}: ${githubUser}
+GitHub User: ${githubUser}
 ${FIELD_NAMES.SUBMISSION.PROJECT_NAME}: ${projectName}
+${FIELD_NAMES.SUBMISSION.TRACK}: ${track}
 ${FIELD_NAMES.SUBMISSION.PROJECT_DESCRIPTION}: ${projectDescription}
-${FIELD_NAMES.SUBMISSION.PROJECT_MEMBERS}: ${projectMembers}
-${FIELD_NAMES.SUBMISSION.WALLET_ADDRESS}: ${walletAddress}
-${FIELD_NAMES.SUBMISSION.REPO_LINK}: ${repoLink}`;
+${FIELD_NAMES.SUBMISSION.REPO_LINK}: ${repoLink}
+${FIELD_NAMES.SUBMISSION.TEAM_LEAD}: ${teamLead}
+${FIELD_NAMES.SUBMISSION.TEAM_WALLET_ADDRESS}: ${teamWalletAddress}`;
     }
 
     /**
@@ -143,9 +143,10 @@ ${FIELD_NAMES.SUBMISSION.REPO_LINK}: ${repoLink}`;
                 folder: folder,
                 name: displayName,
                 projectName: parseFieldFromContent(content, FIELD_NAMES.SUBMISSION.PROJECT_NAME),
+                track: parseFieldFromContent(content, FIELD_NAMES.SUBMISSION.TRACK),
                 projectDescription: parseFieldFromContent(content, FIELD_NAMES.SUBMISSION.PROJECT_DESCRIPTION),
-                projectMembers: parseFieldFromContent(content, FIELD_NAMES.SUBMISSION.PROJECT_MEMBERS),
-                walletAddress: parseFieldFromContent(content, FIELD_NAMES.SUBMISSION.WALLET_ADDRESS),
+                teamLead: parseFieldFromContent(content, FIELD_NAMES.SUBMISSION.TEAM_LEAD),
+                teamWalletAddress: parseFieldFromContent(content, FIELD_NAMES.SUBMISSION.TEAM_WALLET_ADDRESS),
                 repoLink: parseFieldFromContent(content, FIELD_NAMES.SUBMISSION.REPO_LINK)
             };
         }).filter(Boolean);

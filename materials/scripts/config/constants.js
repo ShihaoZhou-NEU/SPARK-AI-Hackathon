@@ -16,24 +16,26 @@ const FILE_NAMES = {
     HACKATHON_INFO: 'HACKATHON.md'
 };
 
-// 字段名配置 - 适配 agenthack Issue 模板
+// 字段名配置 - 适配新的 Issue 模板格式
 const FIELD_NAMES = {
     // 注册字段
     REGISTRATION: {
-        NAME: 'Name [姓名]',
-        CONTACT_METHOD: 'ContactMethod [联系方式]',
-        WANTS_TEAM: 'WantsTeam [组队意愿]',
-        COMMENT: 'Comment [备注]'
+        NAME: 'Name',
+        INTRODUCTION: 'Introduction',
+        CONTACT_METHOD: 'ContactMethod',
+        WALLET_ADDRESS: 'Wallet Address',
+        WANTS_TEAM: 'WantsTeam',
+        TRACK: 'Track',
+        COMMENT: 'Comment'
     },
     // 项目提交字段
     SUBMISSION: {
-        NAME: 'Name [姓名]',
-        PROJECT_NAME: 'ProjectName [项目名称]',
-        GITHUB_USER: 'GithubUser [Github用户名]',
-        PROJECT_DESCRIPTION: 'Brief description [一句话简介]',
-        PROJECT_MEMBERS: 'Team Lead [负责人]',
-        WALLET_ADDRESS: 'Team Wallet Address [团队钱包地址]',
-        REPO_LINK: 'Github Repo Link [Github 地址]'
+        PROJECT_NAME: 'ProjectName',
+        TRACK: 'Track',
+        PROJECT_DESCRIPTION: 'ProjectDescription',
+        REPO_LINK: 'Github Repo Link',
+        TEAM_LEAD: 'Team Lead',
+        TEAM_WALLET_ADDRESS: 'Team Wallet Address'
     }
 };
 
