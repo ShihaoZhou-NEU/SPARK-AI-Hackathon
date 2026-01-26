@@ -45,7 +45,7 @@
 
 | 姓名 | GitHub ID | 联系方式 | 组队意愿 | 赛道选择 | 备注 | 更新资料 |
 | --------- | --------- | -------- | -------- | -------- | ---- | -------- |
-| 测试 | [@lejusuelge-star](https://github.com/lejusuelge-star) | asd@gmail.com<br>_格式: Telegram: @username，微信: username，邮箱: email@example.com_ | y | LLM<br>_例如：支付赛道 / LLM 应用赛道 / 预测市场赛道_ | 无 | [Link](https://github.com/CasualHackathon/SPARK-AI-Hackathon/issues/39) |
+| Serena | [@Serenayyy123](https://github.com/Serenayyy123) | _格式: Telegram: @username，微信: username，邮箱: email@example.com_<br>微信: shoujiyangt2559 | 愿意 | _例如：支付赛道 / LLM 应用赛道 / 预测市场赛道_<br> LLM 应用赛道 | 感兴趣AI，欢迎组队 | [Link](https://github.com/CasualHackathon/SPARK-AI-Hackathon/issues/40) |
 | 虫虫测试 | [@rebelrebel-tech](https://github.com/rebelrebel-tech) | @虫虫测试 | 想要10个队友 | LLM应用 | 虫虫虫虫虫虫虫虫虫 | [Link](https://github.com/CasualHackathon/SPARK-AI-Hackathon/issues/34) |
 | Draken | [@DrakenZeng](https://github.com/DrakenZeng) | Telegram: @Draken_Zeng，微信: Draken_Zeng，邮箱: email@example.com<br>_格式: Telegram: @username，微信: username，邮箱: email@example.com_ | 个人 | 预测市场赛道<br>_例如：支付赛道 / LLM 应用赛道 / 预测市场赛道_ | 无 | [Link](https://github.com/CasualHackathon/SPARK-AI-Hackathon/issues/32) |
 | [报名] 你的姓名 | [@rebelrebel-tech](https://github.com/rebelrebel-tech) | _格式: Telegram: @username，微信: username，邮箱: email@example.com_ | - | _例如：支付赛道 / LLM 应用赛道 / 预测市场赛道_ | - | [Link](https://github.com/CasualHackathon/SPARK-AI-Hackathon/issues/28) |
