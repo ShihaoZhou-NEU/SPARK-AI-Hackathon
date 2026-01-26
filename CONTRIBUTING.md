@@ -10,7 +10,7 @@
 
 **报名教程**  
 
-🎥 Full video: https://hackathon.draken-eth.cc.cd/demo.mp4
+[报名教程 🎥](https://hackathon.draken-eth.cc.cd/demo.mp4)
 
 ## **02 | 注意事项（Important Notes）**
 
