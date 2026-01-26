@@ -91,11 +91,12 @@
 
 **🛠 技术要求**
 
-- 基于 **Kite AI 提供的 API/SDK。**
+- 基于 [**Kite AI 提供的 API/SDK**](https://docs.gokite.ai/)
 - 实现一个具备支付/结算功能的 Demo（Hello World 级别即可，重点是跑通流程）。
 
 **📝更多信息：**
-- 待更新
+- 官方账号：https://x.com/KiteAIChinese；https://x.com/GoKiteAI
+- 官方网站：https://gokite.ai/
 
 ---
 ### **2.**  [**SpoonOS**](https://x.com/SpoonOS_ai) - **LLM 应用 (LLM Application Track)**
