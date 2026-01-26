@@ -53,6 +53,42 @@
 | # | 姓名 | 个人介绍 | 联系方式 | 组队意愿 | 赛道选择 | 备注 | 更新资料 |
 | --- | --------- | -------- | -------- | -------- | -------- | ---- | -------- |
 | 1 | Ivo | - | - | - | - | - | [编辑](https://github.com/CasualHackathon/SPARK-AI-Hackathon/issues/69) |
+| 2 | Tester | 个人开发者 | Telegram: @username | 可能 | - | 无 | [编辑](https://github.com/CasualHackathon/SPARK-AI-Hackathon/issues/67) |
+| 3 | Draken | 测试信息 | Telegram: @Draken_Zeng | 可能 | - | 无 | [编辑](https://github.com/CasualHackathon/SPARK-AI-Hackathon/issues/66) |
+| 4 | Skelita | 我是软件工程专业大三学生，选修方向为区块链，主要技术栈是 Java / Python，偏后端与 AI 应用方向，vibe coding重度依赖者。目前系统性学习过 Web3 基础，包括 Solidity 合约开发、DeFi 机制、常见合约安全问题，也做过一些合约和链上交互实践的小项目。<br>在 Web2 方面，有 Spring Boot、MySQL、Redis 等后端开发经验，理解基本的系统设计、缓存与性能优化思路。最近在补 TypeScript 和 Agent 相关内容，希望把 AI 能力与 Web3 场景结合，做更偏“能落地”的 Demo。<br>黑客松中我更擅长负责后端、合约或 AI 模块的实现，能快速学习新技术、独立推进功能，同时也愿意和产品/前端一起讨论方案、拆需求。希望这次能做出一个完整、有想法、可展示的作品，而不只是拼功能。 | 微信:  shenaringo03，邮箱: skelitalynn@gmail.com | 否 | - | - | [编辑](https://github.com/CasualHackathon/SPARK-AI-Hackathon/issues/64) |
+| 5 | Elon | 我是Tob5交易所合约开发工程师，熟悉ethereum的合约开发，在学习AI相关开发，对AI与区块链结合有很多想法 | Telegram:@ElonCYL 微信:CYL-Elon 邮箱：elonc714@gamil.com | 可能 | - | 要做AI 结合区块链的项目 | [编辑](https://github.com/CasualHackathon/SPARK-AI-Hackathon/issues/63) |
+| 6 | Draken | Draken | Draken | Draken | - | Draken | [编辑](https://github.com/CasualHackathon/SPARK-AI-Hackathon/issues/62) |
+| 7 | yoona | Solidity、React、Next.js、Flutter、BTC，参加过深圳 2025 黑客松、Move 大会 | @yoona1020，Zayx1001，1486343814@qq.com | 可能 | - | - | [编辑](https://github.com/CasualHackathon/SPARK-AI-Hackathon/issues/61) |
+| 8 | huahua | DAPP全栈开发 | Telegram: `@huahuahua1223`，微信: `HHHHHH_1223`，邮箱: `1494133104@qq.com` | 可能 | - | 无 | [编辑](https://github.com/CasualHackathon/SPARK-AI-Hackathon/issues/60) |
+| 9 | DDD | DDD | DDD | DDD | - | DDD | [编辑](https://github.com/CasualHackathon/SPARK-AI-Hackathon/issues/58) |
+| 10 | Draken | Draken | Draken | Draken | - | Draken | [编辑](https://github.com/CasualHackathon/SPARK-AI-Hackathon/issues/56) |
+| 11 | DDD | DDD | DDD | DDD | - | 修改 | [编辑](https://github.com/CasualHackathon/SPARK-AI-Hackathon/issues/54) |
+| 12 | d | d | d | d | - | 修改 | [编辑](https://github.com/CasualHackathon/SPARK-AI-Hackathon/issues/52) |
+| 13 | D | D | D | D | - | D | [编辑](https://github.com/CasualHackathon/SPARK-AI-Hackathon/issues/51) |
+| 14 | Draken | me | 微信: Draken_Zeng | 可能 | - | 无 | [编辑](https://github.com/CasualHackathon/SPARK-AI-Hackathon/issues/50) |
+| 15 | Test | Test | Test | Test | Test | Test | [编辑](https://github.com/CasualHackathon/SPARK-AI-Hackathon/issues/48) |
+| 16 | Draken | Web3 小白 | Telegram: @Draken_Zeng，微信: username，邮箱: email@example.com | 可能 | LLM 应用赛道 | 无 | [编辑](https://github.com/CasualHackathon/SPARK-AI-Hackathon/issues/46) |
+| 17 | test | - | - | - | - | - | [编辑](https://github.com/CasualHackathon/SPARK-AI-Hackathon/issues/45) |
+| 18 | 你的姓名 | - | - | - | - | - | [编辑](https://github.com/CasualHackathon/SPARK-AI-Hackathon/issues/41) |
+| 19 | 你的姓名 | - | - | - | - | - | [编辑](https://github.com/CasualHackathon/SPARK-AI-Hackathon/issues/40) |
+| 20 | 测试 | - | - | - | - | - | [编辑](https://github.com/CasualHackathon/SPARK-AI-Hackathon/issues/39) |
+| 21 | test | - | - | - | - | - | [编辑](https://github.com/CasualHackathon/SPARK-AI-Hackathon/issues/38) |
+| 22 | 测试 | - | - | - | - | - | [编辑](https://github.com/CasualHackathon/SPARK-AI-Hackathon/issues/36) |
+| 23 | 测试 | - | - | - | - | - | [编辑](https://github.com/CasualHackathon/SPARK-AI-Hackathon/issues/35) |
+| 24 | 虫虫测试 | - | - | - | - | - | [编辑](https://github.com/CasualHackathon/SPARK-AI-Hackathon/issues/34) |
+| 25 | 你的姓名 | - | - | - | - | - | [编辑](https://github.com/CasualHackathon/SPARK-AI-Hackathon/issues/33) |
+| 26 | Draken | - | - | - | - | - | [编辑](https://github.com/CasualHackathon/SPARK-AI-Hackathon/issues/32) |
+| 27 | 你的姓名 | - | - | - | - | - | [编辑](https://github.com/CasualHackathon/SPARK-AI-Hackathon/issues/28) |
+| 28 | 虫虫测试 | - | - | - | - | - | [编辑](https://github.com/CasualHackathon/SPARK-AI-Hackathon/issues/27) |
+| 29 | Draken | - | - | - | - | - | [编辑](https://github.com/CasualHackathon/SPARK-AI-Hackathon/issues/26) |
+| 30 | Draken | - | - | - | - | - | [编辑](https://github.com/CasualHackathon/SPARK-AI-Hackathon/issues/25) |
+| 31 | 你的姓名 | - | - | - | - | - | [编辑](https://github.com/CasualHackathon/SPARK-AI-Hackathon/issues/24) |
+| 32 | 你的姓名 | - | - | - | - | - | [编辑](https://github.com/CasualHackathon/SPARK-AI-Hackathon/issues/23) |
+| 33 | 你的姓名 | - | - | - | - | - | [编辑](https://github.com/CasualHackathon/SPARK-AI-Hackathon/issues/22) |
+| 34 | 666 | - | - | - | - | - | [编辑](https://github.com/CasualHackathon/SPARK-AI-Hackathon/issues/19) |
+| 35 | 你的姓名 | - | - | - | - | - | [编辑](https://github.com/CasualHackathon/SPARK-AI-Hackathon/issues/6) |
+| 36 | 你的姓名 | - | - | - | - | - | [编辑](https://github.com/CasualHackathon/SPARK-AI-Hackathon/issues/5) |
+| 37 | 测试 | - | - | - | - | - | [编辑](https://github.com/CasualHackathon/SPARK-AI-Hackathon/issues/4) |
 
 <!-- Registration end -->
 
