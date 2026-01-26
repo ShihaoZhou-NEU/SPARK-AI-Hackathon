@@ -52,7 +52,7 @@
 
 | # | 姓名 | 个人介绍 | 联系方式 | 组队意愿 | 赛道选择 | 备注 | 更新资料 |
 | --- | --------- | -------- | -------- | -------- | -------- | ---- | -------- |
-| 1 | Draken | me | 微信: Draken_Zeng | 可能 | - | 无 | [编辑](https://github.com/CasualHackathon/SPARK-AI-Hackathon/issues/50) |
+| 1 | D | D | D | D | - | D | [编辑](https://github.com/CasualHackathon/SPARK-AI-Hackathon/issues/51) |
 
 <!-- Registration end -->
 
