@@ -291,10 +291,9 @@
 <summary>提交名单（点击展开）</summary>
 
 <!-- Submission start -->
-
 | 项目名称 | GitHub ID | 项目描述 | 项目链接 | 提交时间 |
-| --------- | --------- | -------- | -------- | -------- |
-| 待更新... | - | - | - | - |
+| ----------- | ----------------- | -------------- | ------ | -------- |
+| Spark AI | Serenayyy123 | test-test | [Repo](https://github.com/CasualHackathon/SPARK-AI-Hackathon/issues/new?template=submission.md) \| [Folder](https://github.com/CasualHackathon/agenthack/tree/main/submissions/Serenayyy123) | - |
 
 <!-- Submission end -->
 
