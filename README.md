@@ -36,20 +36,6 @@
 | 🏁 Demo Day (路演)      | 2月1日 19:00-22:00                                                          | 📍 Zoom <br> 📍 Twitter 直播</nobr>                                          | [Zoom 链接](https://us06web.zoom.us/j/86782028304?pwd=wfBDRXFhKM5R9ijUMN2QLWXwk6wTxq.1) <br> [X 直播链接](https://x.com/i/broadcasts/1vOGwdMrvVrJB) |
 | 🏆 获奖公示 (Awards)    | 2月4日                                                                      | 📍 社区公告                                      | X 链接（待更新）                                                                                                                                                                                                                                                               |
 
-<div align="center">
-
-| 活动 (Event) | 时间 (Time UTC+8) | 形式 (Format) | 相关链接 (Link) |
-| :--- | :--- | :--- | :--- |
-| 🗓 Open Day (开幕) | 1月28日 19:00-20:30 | 📍 Zoom <br> 📍 <nobr>Twitter 直播</nobr> | [Zoom 链接](https://us06web.zoom.us/j/82510601772?pwd=2MtYQkfkFOIUsz98wb4lrzcdMQO1iB.1) <br> [X 直播链接](https://x.com/i/broadcasts/1yoJMPZZkkOGQ) |
-| 💻 Co-building (开发期) | 1月29日 19:00-20:00 <br> 1月30日 14:00-15:00 <br> 1月31日 18:30-19:30 | *Hacking Time!* | [Zoom 链接](https://us06web.zoom.us/j/84019245134?pwd=IgtZadqIZLuzHtPCgNphzcSbu8nigS.1) <br> [Zoom 链接](https://us06web.zoom.us/j/88224933555?pwd=qraz4AfI4Xb86JDyTjWviab2bKuBpm.1) <br> [Zoom 链接](https://us06web.zoom.us/j/82971130369?pwd=ii6CAY79mibBunwAz3lIw4ar8Kx37m.1) |
-| 🛠 Tech Workshop | 1月29日 20:30-22:00 | 📍 Zoom <br> 📍 <nobr>Twitter 直播</nobr> | [Zoom 链接](https://us06web.zoom.us/j/84292630277?pwd=I2hqeQAvFnOCXaAKY1tLxmd9aeWR1a.1) <br> [X 直播链接](https://x.com/i/broadcasts/1YqKDNokRPeJV) |
-| 💬 AMA | 1月30日 18:30-19:30 | 📍 <nobr>Twitter Space</nobr> | [Space 链接](https://x.com/i/broadcasts/1zqKVdPPLOlJB) |
-| 📥 Demo 提交截止 | 2月1日 中午 12:00 | 📍 <nobr>GitHub Issue</nobr> | [👉 点击此处提交 Demo](https://github.com/CasualHackathon/SPARK-AI-Hackathon/issues/new?template=submission.md) |
-| 🏁 Demo Day (路演) | 2月1日 19:00-22:00 | 📍 Zoom <br> 📍 <nobr>Twitter 直播</nobr> | [Zoom 链接](https://us06web.zoom.us/j/86782028304?pwd=wfBDRXFhKM5R9ijUMN2QLWXwk6wTxq.1) <br> [X 直播链接](https://x.com/i/broadcasts/1vOGwdMrvVrJB) |
-| 🏆 获奖公示 (Awards) | 2月4日 | 📍 <nobr>社区公告</nobr> | X 链接（待更新） |
-
-</div>
-
 **报名入口：** [点击报名](https://github.com/CasualHackathon/SPARK-AI-Hackathon/issues/new?template=register.md)
 
 **Demo 提交入口：** [提交 Demo](https://github.com/CasualHackathon/SPARK-AI-Hackathon/issues/new?template=submission.md)
