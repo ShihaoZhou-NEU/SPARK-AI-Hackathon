@@ -62,7 +62,8 @@
 报名人数：59｜提交人数：0（名单详见 `CONTRIBUTING.md`）
 <!-- Registration summary end -->
 
-**赛事交流群：（如果社群已满 200 人，需添加运营人员微信邀请入群： clynn2024）**
+
+**赛事交流群：群聊已满 200 人，需添加运营人员微信，备注 SparkAI ，邀请入群： clynn2024**
 
 ## **01 | 参赛规则与激励（Participation Rules & Incentives）**
 
