@@ -2,7 +2,8 @@
 
 # 你的想法，值得被实现。
 
-## 01 | 报名教程视频（Registration Tutorial）
+## 01 | 报名通道与教程视频（Registration Tutorial）
+**报名通道** 
 
 [报名参赛 ➡️](<https://github.com/CasualHackathon/SPARK-AI-Hackathon/issues/new?template=register.md>)  
 
