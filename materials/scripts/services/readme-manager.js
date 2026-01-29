@@ -80,7 +80,7 @@ class ReadmeManager {
     }
 
     /**
-     * 更新 README 中的报名/提交人数统计
+     * 更新 README 中的报名/已提交项目数量统计
      */
     static updateSummary() {
         const registrationCount = FileManager.getDirectoryFiles(DIRECTORIES.REGISTRATION, '.md').length;
@@ -90,7 +90,7 @@ class ReadmeManager {
         const markers = README_MARKERS.SUMMARY;
 
         let readmeContent = FileManager.readFileContent(readmePath);
-        const summaryContent = `报名人数：${registrationCount}｜提交人数：${submissionCount}（名单详见 \`CONTRIBUTING.md\`）`;
+        const summaryContent = `报名人数：${registrationCount}｜已提交项目数量：${submissionCount}（名单详见 \`CONTRIBUTING.md\`）`;
 
         const updatedContent = readmeContent.replace(
             new RegExp(`(${this.escapeRegex(markers.START)})[\\s\\S]*?(${this.escapeRegex(markers.END)})`, 'g'),
