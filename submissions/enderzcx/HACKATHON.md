@@ -1,7 +1,7 @@
-# KitePay Bot
+# Kite Bot | Seamless Autonomous Payment AI Agent
 
 GitHub User: enderzcx
-ProjectName: KitePay Bot
+ProjectName: Kite Bot | Seamless Autonomous Payment AI Agent
 Track: 支付赛道
 ProjectDescription: - 项目名称: KAT Gasless Transfer
 - 参赛赛道: 区块链应用赛道
