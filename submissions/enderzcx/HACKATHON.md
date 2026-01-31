@@ -1,7 +1,7 @@
-# KAT Gasless Transfer
+# KitePay Bot
 
 GitHub User: enderzcx
-ProjectName: KAT Gasless Transfer
+ProjectName: KitePay Bot
 Track: 支付赛道
 ProjectDescription: - 项目名称: KAT Gasless Transfer
 - 参赛赛道: 区块链应用赛道
