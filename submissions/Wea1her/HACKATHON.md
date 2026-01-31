@@ -1,7 +1,7 @@
-# PolyClass
+# PolyGlass
 
 GitHub User: Wea1her
-ProjectName: PolyClass
+ProjectName: PolyGlass
 Track: 预测市场赛道
 ProjectDescription: PolyGlass 是一个 Polymarket 链上数据聚合与可视化平台，为量化团队、DAO 和交易者提供机构级的预测市场数据分析工具。
 Github Repo Link: https://github.com/CasualHackathonPolyGlass/PolyGlass
