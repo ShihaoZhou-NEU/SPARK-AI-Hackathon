@@ -1,6 +1,6 @@
 # ACCLE123
 
-Name: 杨淇
+Name: Liam Yang
 Introduction: 小白
 ContactMethod: 微信：yangqiyoungrich 邮箱:yangqi2568@gmail.com
 WantsTeam: 是
